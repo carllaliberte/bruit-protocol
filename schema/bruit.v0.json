@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/carllaliberte/bruit-protocol/schema/bruit.v0.json",
+  "title": "BRUIT v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "bruit_id", "trous", "detection", "localite", "liberte", "simule", "juridiction", "langue", "pose_at"],
+  "properties": {
+    "format": { "const": "bruit.v0" },
+    "bruit_id": { "type": "string" },
+    "temoin_id": { "type": ["string", "null"] },
+    "trous": { "enum": ["ouverts", "fermes"] },
+    "detection": { "enum": ["ouverte", "fermee"] },
+    "localite": { "enum": ["ouverte", "fermee"] },
+    "liberte": { "enum": ["ouverte", "fermee"] },
+    "visibilite": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "pertes": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "simule": { "type": "boolean" },
+    "juridiction": { "type": "string" },
+    "langue": { "type": "string" },
+    "pose_at": { "type": "string" },
+    "note": { "type": "string" }
+  }
+}

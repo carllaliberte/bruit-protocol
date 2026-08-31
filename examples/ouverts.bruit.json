@@ -1,0 +1,16 @@
+{
+  "format": "bruit.v0",
+  "bruit_id": "BR-fictif-001",
+  "temoin_id": "TM-fictif-001",
+  "trous": "ouverts",
+  "detection": "ouverte",
+  "localite": "ouverte",
+  "liberte": "ouverte",
+  "visibilite": null,
+  "pertes": null,
+  "simule": true,
+  "juridiction": "QC",
+  "langue": "fr-CA",
+  "pose_at": "2026-08-31T20:00:00Z",
+  "note": "Acte fictif. Trous ouverts. C'est le terrain."
+}
