@@ -20,3 +20,7 @@ python3 bruit.py juger examples/ouverts.bruit.json
 ```
 
 Les ingénieurs DI demandent les losses. BRUIT répond par écrit.
+
+## Lattice
+
+Relance auto. Carl merge.
