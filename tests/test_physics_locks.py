@@ -333,6 +333,88 @@ class VisibiliteOneWithoutMeasureRefuses(unittest.TestCase):
         self.assertEqual(carte["pertes"], 0.3)
         self.assertEqual(carte["trous"], "ouverts")
 
+    def test_visibilite_none_still_writes(self):
+        carte = bruit.ecrire()
+        self.assertIsNone(carte["visibilite"])
+        self.assertEqual(carte["trous"], "ouverts")
+
+    def test_visibilite_zero_is_honest_no_contrast(self):
+        carte = bruit.ecrire(visibilite=0.0)
+        self.assertEqual(carte["visibilite"], 0.0)
+        self.assertEqual(carte["trous"], "ouverts")
+
+
+class VisibiliteOutsideUnitIntervalRefuses(unittest.TestCase):
+    def test_ecrire_visibilite_above_one_refuses(self):
+        msg = _refus(bruit.ecrire, visibilite=1.01)
+        self.assertIn("refus", msg.lower())
+        self.assertIn("visibilite", msg.lower())
+        self.assertIn("mensonge", msg.lower())
+        self.assertIn(">", msg)
+
+    def test_ecrire_visibilite_below_zero_refuses(self):
+        msg = _refus(bruit.ecrire, visibilite=-0.01)
+        self.assertIn("refus", msg.lower())
+        self.assertIn("visibilite", msg.lower())
+        self.assertIn("mensonge", msg.lower())
+        self.assertIn("<", msg)
+
+    def test_lire_visibilite_above_one_refuses(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp) / "vis-above.bruit.json"
+            p.write_text(
+                json.dumps(
+                    {
+                        "format": "bruit.v0",
+                        "bruit_id": "BR-vis-hi",
+                        "temoin_id": "TM-vis-hi",
+                        "trous": "ouverts",
+                        "detection": "ouverte",
+                        "localite": "ouverte",
+                        "liberte": "ouverte",
+                        "visibilite": 1.2,
+                        "pertes": None,
+                        "simule": False,
+                        "juridiction": "QC",
+                        "langue": "fr-CA",
+                        "pose_at": "2026-09-03T00:00:00Z",
+                    }
+                ),
+                encoding="utf-8",
+            )
+            msg = _refus(bruit.lire, str(p))
+            self.assertIn("refus", msg.lower())
+            self.assertIn("visibilite", msg.lower())
+            self.assertIn("mensonge", msg.lower())
+
+    def test_lire_visibilite_below_zero_refuses(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp) / "vis-below.bruit.json"
+            p.write_text(
+                json.dumps(
+                    {
+                        "format": "bruit.v0",
+                        "bruit_id": "BR-vis-lo",
+                        "temoin_id": "TM-vis-lo",
+                        "trous": "ouverts",
+                        "detection": "ouverte",
+                        "localite": "ouverte",
+                        "liberte": "ouverte",
+                        "visibilite": -0.1,
+                        "pertes": None,
+                        "simule": False,
+                        "juridiction": "QC",
+                        "langue": "fr-CA",
+                        "pose_at": "2026-09-03T00:00:00Z",
+                    }
+                ),
+                encoding="utf-8",
+            )
+            msg = _refus(bruit.lire, str(p))
+            self.assertIn("refus", msg.lower())
+            self.assertIn("visibilite", msg.lower())
+            self.assertIn("mensonge", msg.lower())
+
 
 class JugerOuvertsIsTerrainNotQuantique(unittest.TestCase):
     def test_juger_ouverts_note_is_terrain_not_quantique(self):
@@ -454,6 +536,9 @@ class ReadmeDoorCopy(unittest.TestCase):
         self.assertIn("simule", text)
         self.assertIn("visibilite", text)
         self.assertIn("--simule", text)
+        self.assertIn("contrast in [0, 1]", text)
+        self.assertIn("> 1 is a lie", text)
+        self.assertIn("< 0 is a lie", text)
 
     def test_copy_on_this_rail_has_no_imagine_word(self):
         for rel in ("README.md", "INTERDIT.md", "JUGE.md", "bruit.py"):

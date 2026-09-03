@@ -24,8 +24,14 @@ def _garde(carte: dict) -> None:
         if carte.get(k) not in ("ouverte", "fermee"):
             raise SystemExit(k + " : ouverte | fermee")
     vis = carte.get("visibilite")
-    if vis is not None and float(vis) == 1:
-        raise SystemExit("refus : visibilite = 1 sans mesure. la visibilite n'est pas un slogan")
+    if vis is not None:
+        v = float(vis)
+        if v > 1:
+            raise SystemExit("refus : visibilite > 1. c'est un mensonge")
+        if v < 0:
+            raise SystemExit("refus : visibilite < 0. c'est un mensonge")
+        if v == 1:
+            raise SystemExit("refus : visibilite = 1 sans mesure. la visibilite n'est pas un slogan")
     if carte["trous"] == "fermes":
         manques = [k for k in ("detection", "localite", "liberte") if carte.get(k) != "fermee"]
         if manques:

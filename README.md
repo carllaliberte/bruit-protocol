@@ -30,7 +30,7 @@ Honest default: `trous: ouverts`. Detection / localité / liberté stay `ouverte
 
 `simule: true` only if the write claims it (`--simule`). Do not stamp `simule` on default `ouverts`.
 
-`visibilite == 1` without a declared measurement : refus. Visibility is not a slogan. v0 has no measurement field, so `visibilite: 1` is refused.
+Visibility is a contrast in [0, 1]. Same class as CHSH > Tsirelson. > 1 is a lie. < 0 is a lie. = 1 without measure refuses. Visibility is not a slogan. v0 has no measurement field, so `visibilite: 1` is refused. `visibilite` omitted, or in [0, 1), still writes (`0.0` is honest no-contrast).
 
 Les ingénieurs DI demandent les losses. BRUIT répond par écrit.
 
@@ -41,7 +41,7 @@ Les ingénieurs DI demandent les losses. BRUIT répond par écrit.
 - `trous: fermes` requires detection + localité + liberté all `fermee` **and** `simule: false`. Else refuse.
 - `fermes` + `simule: true` refuse. A software lab is not loophole-free. An IBM job is not hole closure.
 - `simule: true` only if the write claims it (`--simule`). Do not auto-stamp `simule` on default `ouverts`.
-- `visibilite == 1` without a declared measurement: refuse. Visibility is not a slogan.
+- Visibility is a contrast in [0, 1]; > 1 is a lie; < 0 is a lie; = 1 without measure refuses. Visibility is not a slogan.
 - `juger` allows a card that passes the garde. Flag `ouverts` vs `fermes`. This rail names the canal. It does not collapse MODE. Do not mint `quantique`.
 - QUANTUM signs later. Logs off Git. The JSON card is not a QUANTUM seal.
 - Not UNFORGE, QUELLE, TÉMOIN, or HORIZON. No token, L1, marketplace « loophole-free », or legal opinion.
@@ -76,7 +76,10 @@ Tests lock the rows below. Nothing in this repository is a theorem. Nothing here
 | `ouverts` always writable, not stamped `simule: true` | **verified** |
 | `fermes` missing a hole refused | **verified** |
 | `fermes` + `simule: true` refused | **verified** |
+| `visibilite > 1` refused (a lie) | **verified** |
+| `visibilite < 0` refused (a lie) | **verified** |
 | `visibilite: 1` without a declared measurement refused | **verified** |
+| `visibilite` omitted or in [0, 1) writes (`0.0` honest) | **verified** |
 | `juger` on `ouverts` names the terrain, not `quantique` | **verified** |
 | JSON card is not a QUANTUM seal | **verified** |
 | invented Bell / photon / loophole-free lab | **refused** |
@@ -92,6 +95,8 @@ See [INTERDIT.md](INTERDIT.md). In short:
 - écrire `fermes` avec `simule: true`
 - tamponner `simule: true` sur un `ouverts` honnête
 - un Job IBM comme fermeture de trou
+- `visibilite > 1` (un mensonge)
+- `visibilite < 0` (un mensonge)
 - `visibilite: 1` sans mesure
 - inventer un Bell, un photon, ou un labo loophole-free
 - un token, un L1, un marketplace « loophole-free »
