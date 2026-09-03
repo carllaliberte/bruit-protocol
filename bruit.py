@@ -23,6 +23,9 @@ def _garde(carte: dict) -> None:
     for k in ("detection", "localite", "liberte"):
         if carte.get(k) not in ("ouverte", "fermee"):
             raise SystemExit(k + " : ouverte | fermee")
+    vis = carte.get("visibilite")
+    if vis is not None and float(vis) == 1:
+        raise SystemExit("refus : visibilite = 1 sans mesure. la visibilite n'est pas un slogan")
     if carte["trous"] == "fermes":
         manques = [k for k in ("detection", "localite", "liberte") if carte.get(k) != "fermee"]
         if manques:
@@ -34,7 +37,7 @@ def _garde(carte: dict) -> None:
 def ecrire(temoin_id=None, trous="ouverts", detection="ouverte", localite="ouverte", liberte="ouverte", visibilite=None, pertes=None, simule=None, juridiction="QC", langue="fr-CA"):
     trous = (trous or "ouverts").strip().lower()
     if simule is None:
-        simule = trous != "fermes"
+        simule = False
     carte = {
         "format": FORMAT,
         "bruit_id": "BR-" + uuid.uuid4().hex[:12],
@@ -49,7 +52,7 @@ def ecrire(temoin_id=None, trous="ouverts", detection="ouverte", localite="ouver
         "juridiction": juridiction,
         "langue": langue,
         "pose_at": _now(),
-        "note": "v0 non signée. QUANTUM signe plus tard. Logs hors Git.",
+        "note": "v0 non signée. Logs hors Git.",
     }
     _garde(carte)
     return carte
@@ -73,7 +76,7 @@ def juger(carte: dict) -> dict:
         "visibilite": carte.get("visibilite"),
         "pertes": carte.get("pertes"),
         "simule": carte.get("simule"),
-        "note": "trois trous fermés déclarés. le canal est borné." if fermes else "trous ouverts. l'acte est vrai. la fermeture est nulle.",
+        "note": "trois trous fermés déclarés. le canal est borné." if fermes else "trous ouverts. c'est le terrain. cette rail nomme le canal.",
     }
 
 

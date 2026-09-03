@@ -8,7 +8,7 @@
   "liberte": "ouverte",
   "visibilite": null,
   "pertes": null,
-  "simule": true,
+  "simule": false,
   "juridiction": "QC",
   "langue": "fr-CA",
   "pose_at": "2026-08-31T20:00:00Z",
