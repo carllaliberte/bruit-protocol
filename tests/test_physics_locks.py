@@ -520,25 +520,44 @@ class ReadmeDoorCopy(unittest.TestCase):
         self.assertIn("python3 bruit.py ecrire", text)
         self.assertIn("python3 bruit.py lire", text)
         self.assertIn("python3 bruit.py juger", text)
-        self.assertIn("Verified vs assumed", text)
-        self.assertIn("**verified**", text)
-        self.assertIn("**later**", text)
+        self.assertIn("Vérifié vs présumé", text)
+        self.assertNotIn("assumé", text)
+        self.assertIn("**vérifié**", text)
+        self.assertIn("**plus tard**", text)
 
     def test_readme_says_ouverts_is_honest_and_does_not_mint_quantique(self):
         text = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("Honest default", text)
+        self.assertIn("Défaut honnête", text)
         self.assertIn("`trous: ouverts`", text)
-        self.assertIn("does not mint `quantique`", text)
-        self.assertIn("does not collapse MODE", text)
+        self.assertIn("ne frappe pas `quantique`", text)
+        self.assertIn("ne collapse pas MODE", text)
 
     def test_readme_names_simule_and_visibilite_locks(self):
         text = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("simule", text)
         self.assertIn("visibilite", text)
         self.assertIn("--simule", text)
-        self.assertIn("contrast in [0, 1]", text)
-        self.assertIn("> 1 is a lie", text)
-        self.assertIn("< 0 is a lie", text)
+        self.assertIn("contraste dans [0, 1]", text)
+        self.assertIn("> 1 est un mensonge", text)
+        self.assertIn("< 0 est un mensonge", text)
+
+    def test_readme_door_is_french_not_en_fr_mix(self):
+        text = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("CHSH reste sur TÉMOIN", text)
+        self.assertIn("Jugement = Carl", text)
+        self.assertIn("Un Job IBM n'est pas une fermeture de trou", text)
+        self.assertNotIn("Honest default", text)
+        self.assertNotIn("Always writable", text)
+        self.assertNotIn("Verified vs assumed", text)
+        self.assertNotIn("This rail does not", text)
+        self.assertNotIn("How to run", text)
+        self.assertNotIn("is a lie", text)
+        self.assertNotIn("does not mint", text)
+        self.assertNotIn("CHSH stays on", text)
+        self.assertIn("Ce rail", text)
+        self.assertIn("ce rail", text)
+        self.assertNotIn("Cette rail", text)
+        self.assertNotIn("cette rail", text)
 
     def test_copy_on_this_rail_has_no_imagine_word(self):
         for rel in ("README.md", "INTERDIT.md", "JUGE.md", "bruit.py"):
