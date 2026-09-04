@@ -2,7 +2,7 @@
 
 **Le canal, pas le slogan.**
 
-TÉMOIN porte le score. BRUIT porte ce que le score a vu : pertes, visibilité, trous ouverts ou fermés. Un CHSH 2.4 à 1 % de pertes n'est pas un CHSH 2.4 à 30 %. CHSH reste sur TÉMOIN. Cette rail n'invente pas un Bell, un photon, ni un labo loophole-free.
+TÉMOIN porte le score. BRUIT porte ce que le score a vu : pertes, visibilité, trous ouverts ou fermés. Un CHSH 2.4 à 1 % de pertes n'est pas un CHSH 2.4 à 30 %. CHSH reste sur TÉMOIN. Ce rail n'invente pas un Bell, un photon, ni un labo loophole-free.
 
 Ce dépôt est la version 0. Téléphone + Python. MIT. Voir [INTERDIT.md](INTERDIT.md).
 
@@ -11,7 +11,7 @@ Ce n'est pas QUELLE (l'origine du bit n'est pas un canal).
 Ce n'est pas UNFORGE (un sceau de fichier n'est pas une perte).
 Ce n'est pas HORIZON (une date n'est pas un trou).
 Ce n'est pas un sceau QUANTUM.
-Cette rail nomme le canal. Elle ne collapse pas MODE. Cette rail ne frappe pas `quantique`.
+Ce rail nomme le canal. Il ne collapse pas MODE. Ce rail ne frappe pas `quantique`.
 
 ## Primitive
 
@@ -34,7 +34,7 @@ La visibilité est un contraste dans [0, 1]. Même classe qu'un CHSH > Tsirelson
 
 Les ingénieurs DI demandent les pertes. BRUIT répond par écrit.
 
-## Verrous physiques (cette rail)
+## Verrous physiques (ce rail)
 
 - BRUIT nomme le canal que TÉMOIN a vu : pertes, visibilité, trous. Un CHSH 2.4 à 1 % de pertes n'est pas un CHSH 2.4 à 30 %. CHSH reste sur TÉMOIN. Ne pas inventer un Bell, un photon, ni un labo loophole-free.
 - Défaut honnête : `trous: ouverts`. Toujours. Détection / localité / liberté restent `ouverte` sauf déclaration.
@@ -42,7 +42,7 @@ Les ingénieurs DI demandent les pertes. BRUIT répond par écrit.
 - `fermes` + `simule: true` : refus. Un labo logiciel n'est pas loophole-free. Un Job IBM n'est pas une fermeture de trou.
 - `simule: true` seulement si l'écriture le déclare (`--simule`). Ne pas tamponner `simule` sur un `ouverts` honnête.
 - La visibilité est un contraste dans [0, 1] ; > 1 est un mensonge ; < 0 est un mensonge ; = 1 sans mesure : refus. La visibilité n'est pas un slogan.
-- `juger` autorise une fiche qui passe la garde. `flag` : `ouverts` vs `fermes`. Cette rail nomme le canal. Elle ne collapse pas MODE. Ne pas frapper `quantique`.
+- `juger` autorise une fiche qui passe la garde. `flag` : `ouverts` vs `fermes`. Ce rail nomme le canal. Il ne collapse pas MODE. Ne pas frapper `quantique`.
 - QUANTUM signe plus tard. Logs hors Git. La fiche JSON n'est pas un sceau QUANTUM.
 - Pas UNFORGE, QUELLE, TÉMOIN, ni HORIZON. Pas de token, pas de L1, pas de marketplace « loophole-free », pas d'avis juridique.
 
@@ -72,7 +72,7 @@ Les tests verrouillent les lignes ci-dessous. Rien dans ce dépôt n'est un thé
 
 | Affirmation | Statut |
 |---|---|
-| `ecrire` par défaut → `ouverts` + `simule: false` | **vérifié** par les tests de cette rail |
+| `ecrire` par défaut → `ouverts` + `simule: false` | **vérifié** par les tests de ce rail |
 | `ouverts` toujours, pas tamponné `simule: true` | **vérifié** |
 | `fermes` sans un trou fermé : refus | **vérifié** |
 | `fermes` + `simule: true` : refus | **vérifié** |
@@ -100,7 +100,7 @@ Voir [INTERDIT.md](INTERDIT.md). En bref :
 - `visibilite: 1` sans mesure
 - inventer un Bell, un photon, ou un labo loophole-free
 - un token, un L1, un marketplace « loophole-free »
-- frapper `quantique` sur cette rail
+- frapper `quantique` sur ce rail
 - collapser MODE depuis BRUIT
 
 Mentir est le seul bug. Le défaut est `ouverts`. C'est le terrain.
@@ -124,7 +124,7 @@ MIT (protocoles) · Apache-2.0 (œil UNFORGE). QUANTUM signe **plus tard**. Les 
 ## Fichiers
 
 - [`INTERDIT.md`](INTERDIT.md) — ce qu'on ne prétend pas
-- [`JUGE.md`](JUGE.md) — cette rail nomme le canal, ne frappe pas `quantique`
+- [`JUGE.md`](JUGE.md) — ce rail nomme le canal, ne frappe pas `quantique`
 - [`schema/bruit.v0.json`](schema/bruit.v0.json)
 - [`bruit.py`](bruit.py) — `python3 bruit.py ecrire` / `lire` / `juger`
 - [`examples/ouverts.bruit.json`](examples/ouverts.bruit.json) — défaut honnête

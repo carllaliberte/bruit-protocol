@@ -521,6 +521,7 @@ class ReadmeDoorCopy(unittest.TestCase):
         self.assertIn("python3 bruit.py lire", text)
         self.assertIn("python3 bruit.py juger", text)
         self.assertIn("Vérifié vs présumé", text)
+        self.assertNotIn("assumé", text)
         self.assertIn("**vérifié**", text)
         self.assertIn("**plus tard**", text)
 
@@ -553,6 +554,10 @@ class ReadmeDoorCopy(unittest.TestCase):
         self.assertNotIn("is a lie", text)
         self.assertNotIn("does not mint", text)
         self.assertNotIn("CHSH stays on", text)
+        self.assertIn("Ce rail", text)
+        self.assertIn("ce rail", text)
+        self.assertNotIn("Cette rail", text)
+        self.assertNotIn("cette rail", text)
 
     def test_copy_on_this_rail_has_no_imagine_word(self):
         for rel in ("README.md", "INTERDIT.md", "JUGE.md", "bruit.py"):
